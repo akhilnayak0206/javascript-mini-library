@@ -6,11 +6,11 @@ This project is made using jQuery, JavaScript, HTML and CSS.
 
 The user can select one of 3 languages and user will be greeted with pre defined name Akhil Nayak
 
-Greetr Library explanation of available functions and how to initialize.
-
 ## Quick Start
 
 - Directly run the `index.html` file
+
+## Greetr Library explanation of available functions and how to initialize
 
 ## Create a Greetr Object
 
