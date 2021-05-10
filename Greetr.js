@@ -1,4 +1,10 @@
+// the semi-colon can be added in the start so that if some other libraries or frameworks
+// used before this has some unfinished semi-colon(;) then this should do the trick
+// Note:- if you are using prettier then the semi-colon gets removed
 (function (global, $) {
+  // defining something with let or var inside this function will make sure that the values
+  // are not available outside
+
   // define function constructor
   let Greetr = function (firstName, lastName, language) {
     return new Greetr.init(firstName, lastName, language);
@@ -95,6 +101,37 @@
       // we return this;
       return this;
     },
+
+    // html greeting
+    HTMLGreeting: function (selector, formal) {
+      if (!$) {
+        throw 'jQuery not loaded.';
+      }
+
+      if (!selector) {
+        throw 'Missing jQuery selector';
+      }
+
+      let msg;
+      // check if falsy value
+      if (formal) {
+        msg = this.formalGreeting();
+      } else {
+        msg = this.greeting();
+      }
+
+      if (console) {
+        console.log(msg);
+      }
+
+      // add msg to the selector
+      $(selector).html(msg);
+
+      // to make the object chainable
+      // eg. a.toString().toSomethingElse().....
+      // we return this;
+      return this;
+    },
   };
 
   //   define init with function constructor
@@ -108,7 +145,7 @@
     self.language = language || 'en';
   };
 
-  // give init prototype with prototype
+  // give init prototype with prototype so that we don't have to use 'new'
   Greetr.init.prototype = Greetr.prototype;
 
   //   global(window) Greetr object will point to 2 values the above Greetr and global.G$
